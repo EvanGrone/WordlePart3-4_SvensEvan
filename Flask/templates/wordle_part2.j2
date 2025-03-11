@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='wordle_part1.css'>
+    </head>
+    <body>
+        <h1 align="center"> WORDLE </h1>
+
+        <div class="wordle_board">
+            {% set num_guesses = guesses | length %}
+            {% for row in range(max_guesses) %}
+                <div class="grid-container">
+                    {% for column in range(5) %}
+                        {% if row < num_guesses %}
+                            {% set guess_letter = guesses[row][column] %}
+                            {% set answer_letter = answer[column] %}
+                            <div id="box-{{row}}-{{column}}" class="grey-box"> {{ guess_letter }} </div>
+                        {% else %}
+                            <div id="box-{{row}}-{{column}}" class="empty-box">  </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    <p> </p>
+    <div class="keyboard">
+    {% set key_rows = [
+        ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+        ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+        ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫"]
+    ] %}
+    {% for row in key_rows %}
+        <div class="key-container">
+            {% for key in row %}
+                {% if key == "ENTER" %}
+                    <div class="key-utility">{{ key }}</div>
+                {% elif key == "⌫" %}
+                    <div class="key-utility">{{ key }}</div>
+                {% else %}
+                    <div class="key-grey">{{ key }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

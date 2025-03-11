@@ -1,0 +1,138 @@
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 65px;
+    gap: 5px;
+    background-color: white;
+}
+
+.empty-box {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid gray;
+    text-align: center;
+    line-height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.green-box {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    border: 1px grey;
+    text-align: center;
+    line-height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.yellow-box {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(185, 188, 23);
+    border: 1px grey;
+    text-align: center;
+    line-height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.grey-box {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    background-color: grey;
+    border: 1px grey;
+    text-align: center;
+    line-height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.key-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 50px;
+    gap: 3.5px;
+    background-color: white;
+}
+
+.key-green {
+    width: 40px;
+    height: 45px;
+    background-color: green;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.key-yellow {
+    width: 40px;
+    height: 45px;
+    background-color: rgb(185, 188, 23);
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.key-grey {
+    width: 40px;
+    height: 45px;
+    background-color: grey;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.key-light-grey {
+    width: 40px;
+    height: 45px;
+    background-color: lightgray;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.key-utility {
+    width: 60px;
+    height: 45px;
+    background-color: lightgray;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
