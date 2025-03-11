@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle - Part 2 Tab</title>
+    <link rel="stylesheet" href="/wordle_part2.css">
+</head>
+<body>
+    <h1 class="title">Wordle - Part 2</h1>
+    <div class="wordle-container">
+        <div class="wordle-board">
+            <% for(let rowIndex = 0; rowIndex < maxAttempts; rowIndex++) { %>
+                <div class="word-row">
+                    <% for(let colIndex = 0; colIndex < word.length; colIndex++) {
+                        let letter = (guesses[rowIndex] || "")[colIndex] || "";
+                        let letterClass = "letter";
+                        if (letter) {
+                            if (letter === word[colIndex]) {
+                                letterClass += " green";
+                            } else if (word.includes(letter)) {
+                                letterClass += " yellow";
+                            } else {
+                                letterClass += " grey";
+                            }
+                        }
+                    %>
+                    <div class="<%= letterClass %>" id="box-<%= rowIndex %>-<%= colIndex %>"><%= letter.toUpperCase() %></div>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+        
+        <div class="keyboard">
+            <div class="row">
+                <% "QWERTYUIOP".split('').forEach(char => { %>
+                    <button class="key" id="letter-<%= char.toLowerCase() %>"><%= char %></button>
+                <% }); %>
+            </div>
+            <div class="row">
+                <% "ASDFGHJKL".split('').forEach(char => { %>
+                    <button class="key" id="letter-<%= char.toLowerCase() %>"><%= char %></button>
+                <% }); %>
+            </div>
+            <div class="row">
+                <button class="key wide" id="enter">Enter</button>
+                <% "ZXCVBNM".split('').forEach(char => { %>
+                    <button class="key" id="letter-<%= char.toLowerCase() %>"><%= char %></button>
+                <% }); %>
+                <button class="key wide" id="backspace">Backspace</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

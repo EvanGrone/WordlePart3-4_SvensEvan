@@ -21,18 +21,17 @@
 // and easily switch between them.
 const allParamSets = {
     set1: {
-        maxAttempts: 5,
-        guesses: ['stern', 'aroma', 'crook', 'frock']
+        maxAttempts: 6,
+        guesses: ['stern', 'aroma', 'crook', 'frock'],
+        word: 'words'
     },
     set2: {
         maxAttempts: 8,
-        guesses: ['audio', 'stern', 'glyph']
+        guesses: ['audio', 'stern', 'glyph'],
+        word: 'audio'
     }
 }
-const paramsForPt2 = allParamSets.set1;
-
-
-
+const paramsForPt2 = allParamSets.set2;
 
 /* Import the module containing ExpressJS */
 const express = require('express')
@@ -63,17 +62,22 @@ app.get('/wordle:name([^/]+)', (req, res) => {
 
     /* Construct the EJS template name */
     const templateName = `wordle${name}`;
-    
+
+    /* Extract parameters from the query string */
+    const maxAttempts = parseInt(req.query.maxAttempts) || paramsForPt2.maxAttempts;
+    const word = req.query.word || paramsForPt2.word;
+    const guesses = req.query.guesses ? req.query.guesses.split(',') : paramsForPt2.guesses;
+
     /* Check if file exists. If it does, render the template.
        If not, send a 404 error */
     const ejsTemplateFileName = path.join(__dirname, 'views', `${templateName}.ejs`)
     if (fs.existsSync(ejsTemplateFileName)) {
         /* Render the EJS file */
-        res.render(templateName, paramsForPt2, (err, html) => {
+        res.render(templateName, { maxAttempts, word, guesses }, (err, html) => {
             if (err) {
                 console.error('Error rendering EJS file:', err.message);
                 // Handle error if the EJS file does not exist
-                res.status(500).send('Problem rendering .ejs file: ', err.message);
+                res.status(500).send(`Problem rendering .ejs file: ${err.message}`);
             } else {
                 res.send(html);
             }
