@@ -1,6 +1,13 @@
-// https://stackoverflow.com/questions/16089421/how-do-i-detect-keypresses-in-javascript
-const WorldeModel = require('./js/wordleModel');
-const WordleController = require('./js/wordleController');
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
+
+// The View class is responsible for updating the DOM elements with the game state
+// The View class has two methods: updateBoard and updateKeyboard  
+// The updateBoard method updates the game board with the guesses and results
+// The updateKeyboard method updates the keyboard with the guesses and results
+// The View class has two properties: wordleBoard and keyboard
+// The wordleBoard property selects the div with class 'wordle_board'
+// The keyboard property selects the div with class 'keyboard'
+// The View class is exported to be used in the controller
 
 class View {
     constructor() {
