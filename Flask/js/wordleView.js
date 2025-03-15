@@ -9,7 +9,7 @@
 // The keyboard property selects the div with class 'keyboard'
 // The View class is exported to be used in the controller
 
-class View {
+class WordleView {
     constructor() {
         this.wordleBoard = document.querySelector(".wordle_board"); // Select the div with class 'wordle_board'
         this.keyboard = document.querySelector(".keyboard"); // Select the div with class 'keyboard'

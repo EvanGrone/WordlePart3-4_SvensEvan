@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel='stylesheet' href='wordle_part1.css'>
@@ -7,13 +8,11 @@
 
         <div class="wordle_board">
             {% set num_guesses = guesses | length %}
-            {% for row in range(max_guesses) %}
+            {% for row in range(max_guesses | int) %}
                 <div class="grid-container">
                     {% for column in range(5) %}
                         {% if row < num_guesses %}
-                            {% set guess_letter = guesses[row][column] %}
-                            {% set answer_letter = answer[column] %}
-                            <div id="box-{{row}}-{{column}}" class="grey-box"> {{ guess_letter }} </div>
+                            <div id="box-{{row}}-{{column}}" class="grey-box"> {{ guesses[row][column] }} </div>
                         {% else %}
                             <div id="box-{{row}}-{{column}}" class="empty-box">  </div>
                         {% endif %}
@@ -21,7 +20,9 @@
                 </div>
             {% endfor %}
         </div>
+
     <p> </p>
+
     <div class="keyboard">
     {% set key_rows = [
         ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -36,11 +37,12 @@
                 {% elif key == "⌫" %}
                     <div class="key-utility">{{ key }}</div>
                 {% else %}
-                    <div class="key-grey">{{ key }}</div>
+                    <div class="key-grey" id="{{ key }}">{{ key }}</div>
                 {% endif %}
             {% endfor %}
         </div>
     {% endfor %}
 </div>
+<script src="/static/wordle.js"></script>
 </body>
 </html>

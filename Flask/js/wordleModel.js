@@ -1,6 +1,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 // https://www.w3schools.com/js/js_arrays.asp
-class Game {
+class WordleModel {
     /* Class game is the model for the game that will be played. It will store the answer, 
     the max guesses allowed, and the guesses made by the user. */
     constructor(maxGuesses = 6, answer) {

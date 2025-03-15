@@ -1,37 +1,30 @@
 import flask
-# from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory
 import os
 import argparse
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder='public')  # Ensure the static folder is set correctly
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(ROOT_DIR, 'public')
 print(PUBLIC_DIR)
 
 def handle_template(filename):
+    # Set default parameters
+    parameters = {
+        "max_guesses": int(request.args.get("max_guesses", 6)),
+        'answer': 'SCARY',  # Default answer, can be dynamic
+        'guesses': ['STEAM', 'SOUND', 'SCRAP']  # Default guesses, can be dynamic
+    }
 
-        # Set default parameters
-        parameters = {
-            'max_guesses': 6,
-            'answer': 'SCARY',
-            'guesses': 'STEAM,SOUND,SCRAP,SCARY'
-        }
+    # Override the defaults with any values from the query string
+    parameters.update(flask.request.args)
 
-        # Override the defaults with any values from the query string
-        parameters.update(flask.request.args)
-
-        # Turn the string of guesses into a list
-        parameters['guesses'] = parameters['guesses'].split(',')
-
-        return flask.render_template(f"{filename}.j2", **parameters)
+    return flask.render_template(f"{filename}.j2", **parameters)
 
 @app.route('/<path:filename>')
 def serve_files_and_templates(filename):
-    
-    # if the route does not contain an extension (i.e., a '.')
-    # assume it is a template. Otherwise, just serve it as a 
-    # static file.
+    # Check if the route is a template or static file
     if not '.' in filename:
         return handle_template(filename)
     else:
@@ -47,6 +40,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     app.run(debug=True, port=args.port)
-
-
-  

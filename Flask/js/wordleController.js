@@ -1,5 +1,3 @@
-const require('./wordleModel.js'); 
-
 
 class WordleController {
     constructor(model, view) {
@@ -12,11 +10,12 @@ class WordleController {
     }
      
     handleKeydown(e) {
-        let key = event.key.toUpperCase(); // Get the key pressed and change to uppercase for consistency
+        let key = e.key.toUpperCase(); // Get the key pressed and change to uppercase for consistency
         if (e.key == "Enter") { // If the key pressed is Enter
             if (this.guess.length == 5) { // If the guess is of length 5
                 this.model.appendGuess(this.guess); // Append the guess to the model
-                this.view.updateBoard(this.model.guesses, this.model.checkGuess(this.guess)); // Update the board with the guesses and results
+                const res = this.model.checkGuess(this.guess);
+                this.view.updateBoard(this.model.guesses, res); // Update the board with the guesses and results
                 this.guess = ""; // Reset the guess
                 if (this.model.gameOver()) { // If the game is over
                     if (this.model.guesses.includes(this.model.answer)) { // If the answer is in the guesses
