@@ -20,7 +20,7 @@ def handle_template(filename):
     # Override the defaults with any values from the query string
     parameters.update(flask.request.args)
 
-    return flask.render_template(f"{filename}.j2", **parameters)
+    return flask.render_template(f"{filename}.html", **parameters)
 
 @app.route('/<path:filename>')
 def serve_files_and_templates(filename):

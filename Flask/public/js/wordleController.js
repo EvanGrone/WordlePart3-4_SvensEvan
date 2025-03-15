@@ -1,11 +1,14 @@
 
+
 class WordleController {
     constructor(model, view) {
         this.model = model;
         this.view = view;
-        this.guess = ""; 
+        this.guess = "";
+
 
         document.addEventListener("keydown", (e) => { this.handleKeydown(e); }); // Add event listener for keydown
+
 
     }
      
@@ -32,5 +35,6 @@ class WordleController {
         }
         this.view.updateKeyboard(this.guess); // Update the keyboard with the guess
     }
+
 
 }

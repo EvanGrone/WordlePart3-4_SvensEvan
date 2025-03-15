@@ -1,4 +1,4 @@
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
 
 // The View class is responsible for updating the DOM elements with the game state
 // The View class has two methods: updateBoard and updateKeyboard  
@@ -8,12 +8,12 @@
 // The wordleBoard property selects the div with class 'wordle_board'
 // The keyboard property selects the div with class 'keyboard'
 // The View class is exported to be used in the controller
-
 class WordleView {
     constructor() {
         this.wordleBoard = document.querySelector(".wordle_board"); // Select the div with class 'wordle_board'
         this.keyboard = document.querySelector(".keyboard"); // Select the div with class 'keyboard'
     }
+
 
     updateBoard(guesses, res) {
         const rows = document.querySelectorAll(".grid-container"); // Select all the rows with class 'grid-container'
@@ -26,8 +26,19 @@ class WordleView {
         });
     }
 
+
     updateKeyboard(letter, color) {
         let key = document.getElementById(letter); // Get the key element by the letter
         key.className = color + "-key"; // Set the class of the key to the color
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParameters = new URLSearchParams(window.location.search); // Get the URL parameters
+    const answer = urlParameters.get("answer") || "SCARY"; // Default answer
+    const maxGuesses = 6; //
+    const model = new WordleModel(maxGuesses, answer); // Create a new WordleModel with the answer and max guesses
+    const view = new WordleView(); // Create a new WordleView
+    new WordleController(model, view); // Create a new WordleController with the model and view
+});
