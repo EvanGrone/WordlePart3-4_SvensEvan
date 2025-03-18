@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, send_from_directory
 import os
 import argparse
 
-app = flask.Flask(__name__, static_folder='public')  # Ensure the static folder is set correctly
+app = flask.Flask(__name__, static_folder='public') 
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(ROOT_DIR, 'public')
@@ -13,12 +13,13 @@ def handle_template(filename):
     # Set default parameters
     parameters = {
         "max_guesses": int(request.args.get("max_guesses", 6)),
-        'answer': 'SCARY',  # Default answer, can be dynamic
-        'guesses': ['STEAM', 'SOUND', 'SCRAP']  # Default guesses, can be dynamic
+        'answer': 'SCARY',
+        'guesses': ['STEAM','SOUND','SCRAP']
     }
 
     # Override the defaults with any values from the query string
     parameters.update(flask.request.args)
+    parameters['max_guesses'] = int(parameters['max_guesses']) # Ensure max_guesses is an integer
 
     return flask.render_template(f"{filename}.html", **parameters)
 

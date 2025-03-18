@@ -21,24 +21,18 @@ class WordleView {
             const boxes = rows[i].querySelectorAll("div"); // Select all the divs in the row, which are the boxes
             guess.split("").forEach((letter, j) => { // For each letter in the guess
                 boxes[j].textContent = letter; // Set the text content of the box to the letter
-                boxes[j].className = res[i][j] + "-box"; // Set the class of the box to the color
+                boxes[j].className = res[j] + "-box"; // Set the class of the box to the color
             });
         });
     }
 
 
-    updateKeyboard(letter, color) {
-        let key = document.getElementById(letter); // Get the key element by the letter
-        key.className = color + "-key"; // Set the class of the key to the color
+    updateKeyboard(guess, res) {
+        guess.split("").forEach((letter, i) => {
+            let key = document.getElementById(letter);
+            if (key) {
+                key.className = res[i] + "-key";
+            }
+        });
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const urlParameters = new URLSearchParams(window.location.search); // Get the URL parameters
-    const answer = urlParameters.get("answer") || "SCARY"; // Default answer
-    const maxGuesses = 6; //
-    const model = new WordleModel(maxGuesses, answer); // Create a new WordleModel with the answer and max guesses
-    const view = new WordleView(); // Create a new WordleView
-    new WordleController(model, view); // Create a new WordleController with the model and view
-});

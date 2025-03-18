@@ -5,98 +5,107 @@
     <body>
         <h1 align="center"> WORDLE </h1>
         <div class="grid-container">
-            <div class="green-box"> S </div>
-            <div class="grey-box"> T </div>
-            <div class="grey-box"> E </div>
-            <div class="yellow-box"> A </div>
-            <div class="grey-box"> M </div>
-        </div>
 
-        <div class="grid-container">
-            <div class="green-box"> S </div>
-            <div class="grey-box"> O </div>
-            <div class="grey-box"> U </div>
-            <div class="grey-box"> N </div>
-            <div class="grey-box"> D </div>
-        </div>
+        <!-- BOARD WRAPPER -->
+        <div class="wordle_board">
+            <div class="grid-container">
+                <div class="green-box"> S </div>
+                <div class="grey-box"> T </div>
+                <div class="grey-box"> E </div>
+                <div class="yellow-box"> A </div>
+                <div class="grey-box"> M </div>
+            </div>
 
-        <div class="grid-container">
-            <div class="green-box"> S </div>
-            <div class="green-box"> C </div>
-            <div class="yellow-box"> R </div>
-            <div class="yellow-box"> A </div>
-            <div class="grey-box"> P </div>
-        </div>
+            <div class="grid-container">
+                <div class="green-box"> S </div>
+                <div class="grey-box"> O </div>
+                <div class="grey-box"> U </div>
+                <div class="grey-box"> N </div>
+                <div class="grey-box"> D </div>
+            </div>
 
-        <div class="grid-container">
-            <div class="green-box"> S </div>
-            <div class="green-box"> C </div>
-            <div class="green-box"> A </div>
-            <div class="green-box"> R </div>
-            <div class="green-box"> Y </div>
-        </div>
+            <div class="grid-container">
+                <div class="green-box"> S </div>
+                <div class="green-box"> C </div>
+                <div class="yellow-box"> R </div>
+                <div class="yellow-box"> A </div>
+                <div class="grey-box"> P </div>
+            </div>
 
-        <div class="grid-container"> 
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-        </div>
+            <div class="grid-container">
+                <div class="green-box"> S </div>
+                <div class="green-box"> C </div>
+                <div class="green-box"> A </div>
+                <div class="green-box"> R </div>
+                <div class="green-box"> Y </div>
+            </div>
 
-        <div class="grid-container"> 
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
-            <div class="empty-box">  </div>
+            <div class="grid-container"> 
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+            </div>
+
+            <div class="grid-container"> 
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+                <div class="empty-box">  </div>
+            </div>
         </div>
 
         <p> </p>
 
-        <div class="key-container"> 
-            <div class="key-light-grey"> Q </div>
-            <div class="key-light-grey"> W </div>
-            <div class="key-grey"> E </div>
-            <div class="key-green"> R </div>
-            <div class="key-grey"> T </div>
-            <div class="key-green"> Y </div>
-            <div class="key-grey"> U </div>
-            <div class="key-light-grey"> I </div>
-            <div class="key-grey"> O </div>
-            <div class="key-grey"> P </div>
+        <!-- KEYBOARD WRAPPER -->
+        <div class="keyboard">
+
+            <div class="key-container"> 
+                <div class="key-light-grey" id="Q"> Q </div>
+                <div class="key-light-grey" id="W"> W </div>
+                <div class="key-grey" id="E"> E </div>
+                <div class="key-green" id="R"> R </div>
+                <div class="key-grey" id="T"> T </div>
+                <div class="key-green" id="Y"> Y </div>
+                <div class="key-grey" id="U"> U </div>
+                <div class="key-light-grey" id="I"> I </div>
+                <div class="key-grey" id="O"> O </div>
+                <div class="key-grey" id="P"> P </div>
+            </div>
+
+            <div class="key-container"> 
+                <div class="key-green" id="A"> A </div>
+                <div class="key-green" id="S"> S </div>
+                <div class="key-grey" id="D"> D </div>
+                <div class="key-light-grey" id="F"> F </div>
+                <div class="key-light-grey" id="G"> G </div>
+                <div class="key-light-grey" id="H"> H </div>
+                <div class="key-light-grey" id="J"> J </div>
+                <div class="key-light-grey" id="K"> K </div>
+                <div class="key-light-grey" id="L"> L </div>
+            </div>
+
+            <div class="key-container"> 
+                <div class="key-utility" id="ENTER"> ENTER </div>
+                <div class="key-light-grey" id="Z"> Z </div>
+                <div class="key-light-grey" id="X"> X </div>
+                <div class="key-green" id="C"> C </div>
+                <div class="key-light-grey" id="V"> V </div>
+                <div class="key-light-grey" id="B"> B </div>
+                <div class="key-grey" id="N"> N </div>
+                <div class="key-grey" id="M"> M </div>
+                <div class="key-utility" id="BACKSPACE"> ⌫ </div>
+            </div>
+
         </div>
 
-        <div class="key-container"> 
-            <div class="key-green"> A </div>
-            <div class="key-green"> S </div>
-            <div class="key-grey"> D </div>
-            <div class="key-light-grey"> F </div>
-            <div class="key-light-grey"> G </div>
-            <div class="key-light-grey"> H </div>
-            <div class="key-light-grey"> J </div>
-            <div class="key-light-grey"> K </div>
-            <div class="key-light-grey"> L </div>
-        </div>
-
-        <div class="key-container"> 
-            <div class="key-utility"> ENTER </div>
-            <div class="key-light-grey"> Z </div>
-            <div class="key-light-grey"> X </div>
-            <div class="key-green"> C </div>
-            <div class="key-light-grey"> V </div>
-            <div class="key-light-grey"> B </div>
-            <div class="key-grey"> N </div>
-            <div class="key-grey"> M </div>
-            <div class="key-utility"> ⌫ <div>
-        </div>
-
-
-<script src="js/wordleModel.js"></script>
-<script src="js/wordleView.js"></script>
-<script src="js/wordleController.js"></script>
-<script src="js/wordle.js"></script>
+        <!-- JS SCRIPTS -->
+        <script src="js/wordleModel.js"></script>
+        <script src="js/wordleView.js"></script>
+        <script src="js/wordleController.js"></script>
+        <script src="js/wordle.js"></script>
 
     </body>
 </html>
-

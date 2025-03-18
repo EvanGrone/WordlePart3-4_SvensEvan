@@ -19,6 +19,7 @@ class WordleController {
                 this.model.appendGuess(this.guess); // Append the guess to the model
                 const res = this.model.checkGuess(this.guess);
                 this.view.updateBoard(this.model.guesses, res); // Update the board with the guesses and results
+                this.view.updateKeyboard(this.guess, res);
                 this.guess = ""; // Reset the guess
                 if (this.model.gameOver()) { // If the game is over
                     if (this.model.guesses.includes(this.model.answer)) { // If the answer is in the guesses
@@ -33,7 +34,6 @@ class WordleController {
         } else if (e.key.length == 1) { // If the key pressed is a letter
             this.guess += e.key.toUpperCase(); // Add the letter to the guess
         }
-        this.view.updateKeyboard(this.guess); // Update the keyboard with the guess
     }
 
 

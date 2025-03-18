@@ -34,7 +34,7 @@ class WordleModel {
                 }
             }
         for (let i = 0; i < 5; i++) {
-            if (this.answer.includes(guess[i])) {
+            if (this.answer.includes(guess[i]) && res[i] !== "green") {
                 if (guess[i] != this.answer[i]) { // If the character is in the answer but not in the correct position
                     res[i] = "yellow";
                 }
