@@ -10,7 +10,6 @@ PUBLIC_DIR = os.path.join(ROOT_DIR, 'public')
 print(PUBLIC_DIR)
 
 def handle_template(filename):
-    # Set default parameters
     parameters = {
         "max_guesses": int(request.args.get("max_guesses", 6)),
         'answer': 'SCARY',
