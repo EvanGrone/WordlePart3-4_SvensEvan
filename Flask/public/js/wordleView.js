@@ -81,7 +81,13 @@ class WordleView {
         guess.split("").forEach((letter, i) => {
             let key = document.getElementById(letter);
             if (key) {
-                key.className = res[i] + "-key";
+                // Only update the key color if it's a "better" color than current
+                // Green is better than yellow, which is better than grey, which is better than light-grey
+                if (res[i] === "green" || 
+                    (res[i] === "yellow" && !key.className.includes("green")) ||
+                    (res[i] === "grey" && !key.className.includes("green") && !key.className.includes("yellow"))) {
+                    key.className = res[i] + "-key";
+                }
             }
         });
     }

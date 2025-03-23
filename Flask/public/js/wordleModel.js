@@ -21,27 +21,32 @@ class WordleModel {
         }
 
 
-    checkGuess(guess) {
-        guess = guess.toUpperCase(); // Change to uppercase for consistency
-        let res = Array(5) // empty array of 5 length to store the comparison results of guess and answer
-       
-        for (let i = 0; i < 5; i++) {
-            res[i] = "grey"; // default to make all squares grey than overwrite with correct colors, wrong letters stay grey
-        }
-        for (let i = 0; i < 5; i++) {
-            if (guess[i] == this.answer[i]) { // If the character is in the correct position, colored block will be green
-                res[i] = "green";
+        checkGuess(guess) {
+            guess = guess.toUpperCase(); // Change to uppercase for consistency
+            let res = Array(5).fill("grey"); // Default to grey
+            let answerCopy = this.answer.split(''); // Create a copy to mark used letters
+            
+            // First pass: Mark green for correct positions
+            for (let i = 0; i < 5; i++) {
+                if (guess[i] === this.answer[i]) {
+                    res[i] = "green";
+                    answerCopy[i] = null; // Mark this letter as used
                 }
             }
-        for (let i = 0; i < 5; i++) {
-            if (this.answer.includes(guess[i]) && res[i] !== "green") {
-                if (guess[i] != this.answer[i]) { // If the character is in the answer but not in the correct position
-                    res[i] = "yellow";
+            
+            // Second pass: Mark yellow for letters that exist but in wrong positions
+            for (let i = 0; i < 5; i++) {
+                if (res[i] !== "green") { // Skip already marked green positions
+                    const letterIndex = answerCopy.indexOf(guess[i]);
+                    if (letterIndex !== -1) {
+                        res[i] = "yellow";
+                        answerCopy[letterIndex] = null; // Mark this letter as used
+                    }
                 }
             }
+            
+            return res;
         }
-        return res;
-    }
 
 
     gameOver() {
