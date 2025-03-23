@@ -14,6 +14,57 @@ class WordleView {
         this.keyboard = document.querySelector(".keyboard"); // Select the div with class 'keyboard'
     }
 
+    // Add the missing renderBoard method
+    renderBoard(model) {
+        // Clear the existing board if needed
+        // this.wordleBoard.innerHTML = ''; 
+        
+        // If you want to dynamically create the board instead of using the static HTML:
+        /*
+        for (let i = 0; i < model.maxGuesses; i++) {
+            const row = document.createElement('div');
+            row.className = 'grid-container';
+            
+            for (let j = 0; j < 5; j++) {
+                const box = document.createElement('div');
+                box.className = 'empty-box';
+                row.appendChild(box);
+            }
+            
+            this.wordleBoard.appendChild(row);
+        }
+        */
+        
+        // If using the existing board structure, just make sure the rows are properly initialized
+        const rows = document.querySelectorAll(".grid-container");
+        // Initialize with empty boxes if needed
+    }
+
+    // Add the missing renderKeyboard method
+    renderKeyboard(model) {
+        // The keyboard is already in the HTML, so we just need to make sure
+        // it's properly initialized with the correct listeners if needed
+        
+        // Optional: Add click handlers for on-screen keyboard
+        const keys = document.querySelectorAll(".key-container div");
+        keys.forEach(key => {
+            key.addEventListener('click', (e) => {
+                // Dispatch a keydown event to simulate keyboard press
+                const keyId = key.id;
+                let keyEvent;
+                
+                if (keyId === 'ENTER') {
+                    keyEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+                } else if (keyId === 'BACKSPACE') {
+                    keyEvent = new KeyboardEvent('keydown', { key: 'Backspace' });
+                } else {
+                    keyEvent = new KeyboardEvent('keydown', { key: keyId });
+                }
+                
+                document.dispatchEvent(keyEvent);
+            });
+        });
+    }
 
     updateBoard(guesses, res) {
         const rows = document.querySelectorAll(".grid-container"); // Select all the rows with class 'grid-container'
@@ -25,7 +76,6 @@ class WordleView {
             });
         });
     }
-
 
     updateKeyboard(guess, res) {
         guess.split("").forEach((letter, i) => {
