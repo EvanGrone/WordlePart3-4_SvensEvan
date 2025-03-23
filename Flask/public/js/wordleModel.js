@@ -22,11 +22,11 @@ class WordleModel {
 
 
         checkGuess(guess) {
-            guess = guess.toUpperCase(); // Change to uppercase for consistency
-            let res = Array(5).fill("grey"); // Default to grey
-            let answerCopy = this.answer.split(''); // Create a copy to mark used letters
+            guess = guess.toUpperCase();
+            let res = Array(5).fill("grey");
+            let answerCopy = this.answer.split('');
             
-            // First pass: Mark green for correct positions
+            // First pass: check for correct positions (green)
             for (let i = 0; i < 5; i++) {
                 if (guess[i] === this.answer[i]) {
                     res[i] = "green";
@@ -34,7 +34,7 @@ class WordleModel {
                 }
             }
             
-            // Second pass: Mark yellow for letters that exist but in wrong positions
+            // Second pass: check for letters in wrong positions (yellow)
             for (let i = 0; i < 5; i++) {
                 if (res[i] !== "green") { // Skip already marked green positions
                     const letterIndex = answerCopy.indexOf(guess[i]);
